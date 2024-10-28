@@ -1,12 +1,21 @@
 import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import { StyleSheet } from 'react-native';
+import Navigator from './src/navigation/Navigator';
+import Header from './src/components/Header';
+import Footer from './src/components/Footer';
+import { store } from './src/app/store';
+import { Provider } from 'react-redux';
 
 export default function App() {
   return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
+    <>
+    <Provider store={store}>
+    <StatusBar barStyle="light-content"/>
+    <Header/>
+    <Navigator/>
+    <Footer/>
+    </Provider>
+    </>
   );
 }
 
@@ -18,3 +27,4 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
 });
+//statusbar  backgroundColor="rgba(88, 245, 39, 0.8)"
