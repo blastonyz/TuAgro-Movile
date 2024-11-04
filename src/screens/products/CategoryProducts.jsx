@@ -1,8 +1,8 @@
  import {useEffect, useState} from 'react'
- import { FlatList, Text, View, ActivityIndicator, Pressable } from 'react-native'
+ import { FlatList, Text, View, ActivityIndicator, Pressable, Image } from 'react-native'
  import { useSelector, useDispatch } from 'react-redux';
- import { useGetProductsByCategoryQuery } from '../services/productsApi';
- import { setProductId } from '../features/products/productsSlice';
+ import { useGetProductsByCategoryQuery } from '../../services/productsApi';
+ import { setProductId } from '../../features/products/productsSlice';
 
  const CategoryProducts = ({navigation}) => {
   const [productsFiltered,setProductsFiltered] = useState("");
@@ -29,8 +29,19 @@
         navigation.navigate("Producto")
         }}>  
         <View>
-          <Text> {item.title} </Text>
-          <Text>{item.price}</Text>
+           
+                <Text>{item.title}</Text>
+
+                <Image
+                source={{uri: `${item.image}`}}
+                style={{width: 150, height: 150}}
+                />
+                 <Text>Precio: {item.price} U$D</Text>
+                <Text>Descripcion: {item.shortDescription}</Text>
+               
+                <Text>Marca: {item.brand}</Text>
+                
+           
         </View>
       </Pressable> 
       )

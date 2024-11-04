@@ -24,7 +24,7 @@ export const cartSlice = createSlice({
                         item.quiantity += action.payload.quantity
                         return item
                     }
-                    return itam
+                    return item
                 })
             }
         },

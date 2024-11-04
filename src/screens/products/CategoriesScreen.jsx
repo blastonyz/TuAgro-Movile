@@ -1,11 +1,13 @@
 import { View, Text, Pressable, FlatList, ActivityIndicator } from "react-native";
-import { useGetCategoriesQuery } from "../services/productsApi";
-import { useDispatch, useSelector } from "react-redux";
-import { setCategory } from "../features/products/productsSlice";
+import { useGetCategoriesQuery } from "../../services/productsApi";
+import { useDispatch } from "react-redux";
+import { setCategory } from "../../features/products/productsSlice";
+
 const CategorieScreen = ({navigation}) => {
-    //const categories = useSelector(state => state.produtsSlice.value.categorySelected);
+    
     const { data: categories, error, isLoading } = useGetCategoriesQuery()
 
+    //console.log('categ: ',categories);
     
     const dispatch = useDispatch()
 

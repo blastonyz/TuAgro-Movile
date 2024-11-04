@@ -1,9 +1,10 @@
 
 import {  createNativeStackNavigator } from "@react-navigation/native-stack";
 import React from "react";
-import CategoriesScreen from "../screens/CategoriesScreen";
-import  CategoryProducts  from "../screens/CategoryProducts";
-import ProductSelected from "../screens/ProductSelected";
+import CategoriesScreen from "../screens/products/CategoriesScreen";
+import  CategoryProducts  from "../screens/products/CategoryProducts";
+import ProductSelected from "../screens/products/ProductSelected";
+import  CartScreen  from "../screens/cart/CartScreen";
 
 const Stack =  createNativeStackNavigator();
 
@@ -21,6 +22,11 @@ const CategorieStack = () => (
       <Stack.Screen
       name="Producto"
       component={ProductSelected}
+      //options={{ headerShown: false }}  Ocultar encabezado en esta ruta
+    />
+       <Stack.Screen
+      name="Carrito"
+      component={CartScreen}
       //options={{ headerShown: false }}  Ocultar encabezado en esta ruta
     />
   </Stack.Navigator>
