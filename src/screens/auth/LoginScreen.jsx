@@ -1,4 +1,4 @@
-import { View,TextInput, Pressable, Text } from "react-native";
+import { View,TextInput, Pressable, Text, StyleSheet } from "react-native";
 import { useState, useEffect } from "react";
 import { useLoginMutation } from "../../services/authApi";
 import { useDispatch } from "react-redux";
@@ -38,14 +38,14 @@ const LoginScreen = ({navigation}) => {
         });
     }
   return (
-    <View>
+    <View style={styles.mainInputs}>
      <TextInput
             placeholder="Email"
             placeholderTextColor={'black'}
             onChangeText={(text) =>handleChange('email', text)}
             keyboardType="email-address"
             value={userLog.email}
-
+            style={styles.input}
         />
 
         <TextInput
@@ -53,6 +53,7 @@ const LoginScreen = ({navigation}) => {
             placeholderTextColor={'black'}
             onChangeText={(text) =>handleChange('password',text)}
             value={userLog.password}
+            style={styles.input}
             secureTextEntry
 
         />
@@ -73,3 +74,15 @@ const LoginScreen = ({navigation}) => {
 }
 
 export default LoginScreen
+
+const styles = StyleSheet.create({
+    mainInputs: {
+        justifyContent:'center',
+        alignItems:'center'
+    },
+    input:{
+        backgroundColor:'yellow',
+        width:'50%',
+        margin:10
+    },
+})

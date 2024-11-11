@@ -1,5 +1,6 @@
 import { View, StyleSheet, Image, Pressable, Text } from "react-native"
 
+
 const ProductsCard = ({item,navigation,dispatch,setProductId}) => {
    
     return (
@@ -16,7 +17,10 @@ const ProductsCard = ({item,navigation,dispatch,setProductId}) => {
             Descripción: {item.shortDescription}
           </Text>
         </View>
+        <View style={styles.rightContainer}>
         <Image source={{ uri: `${item.image}` }} style={styles.productImage} />
+    
+        </View>
       </View>
     </Pressable>
   );
@@ -81,4 +85,16 @@ const styles = StyleSheet.create({
     height: 180,
     borderRadius: 8,
   },
+  iconAdd:{
+    backgroundColor:'green',
+    width:55,
+    height:55,
+    alignItems:'center',
+    position:'absolute',
+    right:0,
+    bottom:0,
+    borderBottomRightRadius: 7, 
+  },
 });
+
+//      <Icon name='add-shopping-cart' size={45} color={'white'} style={styles.iconAdd}/>

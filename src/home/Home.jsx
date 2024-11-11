@@ -177,7 +177,7 @@ const styles = StyleSheet.create({
     borderColor: 'gray',
     borderTopWidth: 2,
     borderBottomWidth: 7,
-    borderRightWidth:5,
+    borderRightWidth:7,
     flexDirection:'row',
     borderRadius:20,
     

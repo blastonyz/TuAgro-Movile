@@ -9,21 +9,22 @@ const Stack =  createNativeStackNavigator();
 const CategorieStack = () => (
  
 <Stack.Navigator>
-    <Stack.Screen name="CategoriesRender" component={CategoriesScreen} />
+    <Stack.Screen name="CategoriesRender" component={CategoriesScreen}
+    options={{ headerShown: false }} />
     <Stack.Screen
       name="ProductosCategoria"
       component={CategoryProducts}
-      //options={{ headerShown: false }}  Ocultar encabezado en esta ruta
+      options={{ headerShown: false }}  
     />
       <Stack.Screen
       name="Producto"
       component={ProductSelected}
-      //options={{ headerShown: false }}  Ocultar encabezado en esta ruta
+      options={{ headerShown: false }}  
     />
        <Stack.Screen
       name="Carrito"
       component={CartScreen}
-      //options={{ headerShown: false }}  Ocultar encabezado en esta ruta
+      //options={{ headerShown: false }}  
     />
   </Stack.Navigator>
 );

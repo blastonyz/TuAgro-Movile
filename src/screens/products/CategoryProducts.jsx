@@ -13,8 +13,6 @@
   
   const { data: categoryFiltered, error, isLoading } = useGetProductsByCategoryQuery(category)
 
-
-  
   const dispatch = useDispatch()
 
   useEffect(() => {
@@ -46,6 +44,12 @@
             <FlatList
             data={productsFiltered}
             keyExtractor={item => item.id.toString()}
+            ListHeaderComponent={() => (
+
+              <View style={styles.categriesMainContainer}>
+                  <Text style={styles.categriesMaintitle}>{categoryFiltered[0].category}</Text>
+              </View>
+          )}
             renderItem={RenderCategoryProducts}
             contentContainerStyle={styles.listContainer}  
             />
@@ -61,5 +65,26 @@
    listContainer:{
     flexGrow: 1,
     paddingBottom: 10,
-   }
+    marginTop:20,
+   },
+   categriesMainContainer: {
+    justifyContent: 'center',
+    textAlign: 'center',
+    alignSelf: 'center',
+    marginTop: 15,
+    marginBottom:20
+},
+   categriesMaintitle: {
+    fontSize: 22,
+    fontWeight: '600',
+    margin: 'auto',
+    backgroundColor: '#EEE21C',
+    borderRadius: 20,
+    width: 240,
+    textAlign: 'center',
+    height: 40,
+    paddingTop: 4,
+    elevation: 5,
+    fontFamily: 'ChelseaMarket',
+},
  })

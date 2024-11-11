@@ -4,6 +4,7 @@ import {View, Pressable, Image,StyleSheet,Text} from 'react-native'
 const CategorieCard = ({ item, dispatch, setCategory, navigation }) => {
     return (
         <View style={styles.categorieContainer} >
+           
             <Pressable onPress={() => {
                 dispatch(setCategory(item.title))
                 navigation.navigate('ProductosCategoria')
@@ -22,7 +23,7 @@ export default CategorieCard;
 const styles = StyleSheet.create({
     categorieCard: {
         flex: 1,
-        margin: 10,
+        margin: 20,
         borderColor: 'gray',
         borderTopWidth: 2,
         borderBottomWidth: 7,
@@ -34,12 +35,13 @@ const styles = StyleSheet.create({
         justifyContent:'center',
         alignSelf:'center',
     },
+   
     categorieTitle: {
         alignItems: 'center',
         textAlign: 'center',
         fontSize: 20,
         fontWeight: '600',
-        borderRadius: 12,
+        borderRadius: 14,
         backgroundColor:'rgba(4, 180, 0, 0.5)',
         borderColor: '#04B404',
         borderWidth: 2,

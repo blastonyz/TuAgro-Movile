@@ -52,7 +52,8 @@ const styles = StyleSheet.create({
         height: 'auto',
         marginTop:25,
         flexDirection:'row',
-        justifyContent:'space-between'
+        justifyContent:'space-between',
+        marginLeft:0,
     },
     secondTitle:{
         fontSize:22,
@@ -65,6 +66,7 @@ const styles = StyleSheet.create({
         height:40,
         paddingTop:4,
         elevation:5,
+        marginLeft:0,
         fontFamily:'ChelseaMarket',
     },
     imageServices:{

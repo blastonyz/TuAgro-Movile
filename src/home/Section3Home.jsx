@@ -48,7 +48,7 @@ const styles = StyleSheet.create({
     
     overlay:{
         ...StyleSheet.absoluteFillObject,
-        backgroundColor: 'rgba(50, 50, 50, 0.6)',
+        backgroundColor: 'rgba(50, 50, 50, 0.5)',
         height:500
     },
     text1Cont:{
