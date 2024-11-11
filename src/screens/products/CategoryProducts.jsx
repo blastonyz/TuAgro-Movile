@@ -1,8 +1,9 @@
  import {useEffect, useState} from 'react'
- import { FlatList, Text, View, ActivityIndicator, Pressable, Image } from 'react-native'
+ import { FlatList, Text, View, ActivityIndicator, Pressable,StyleSheet} from 'react-native'
  import { useSelector, useDispatch } from 'react-redux';
  import { useGetProductsByCategoryQuery } from '../../services/productsApi';
  import { setProductId } from '../../features/products/productsSlice';
+ import ProductsCard from '../../components/ProductsCard';
 
  const CategoryProducts = ({navigation}) => {
   const [productsFiltered,setProductsFiltered] = useState("");
@@ -21,29 +22,13 @@
   },[categoryFiltered])  
 
   const RenderCategoryProducts = ({item}) => {
-   
-    
       return (
-      <Pressable onPress={() => {
-        dispatch(setProductId(item.id))
-        navigation.navigate("Producto")
-        }}>  
-        <View>
-           
-                <Text>{item.title}</Text>
-
-                <Image
-                source={{uri: `${item.image}`}}
-                style={{width: 150, height: 150}}
-                />
-                 <Text>Precio: {item.price} U$D</Text>
-                <Text>Descripcion: {item.shortDescription}</Text>
-               
-                <Text>Marca: {item.brand}</Text>
-                
-           
-        </View>
-      </Pressable> 
+        <ProductsCard
+          item={item}
+          navigation={navigation}
+          dispatch={dispatch}
+          setProductId={setProductId}
+        />
       )
   }
 
@@ -62,6 +47,7 @@
             data={productsFiltered}
             keyExtractor={item => item.id.toString()}
             renderItem={RenderCategoryProducts}
+            contentContainerStyle={styles.listContainer}  
             />
 
             }
@@ -70,3 +56,10 @@
  }
  
  export default CategoryProducts
+
+ const styles = StyleSheet.create({
+   listContainer:{
+    flexGrow: 1,
+    paddingBottom: 10,
+   }
+ })

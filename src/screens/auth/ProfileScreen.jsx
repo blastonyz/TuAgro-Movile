@@ -1,10 +1,10 @@
 import { useState } from "react"
-import { Text, View, Pressable, Image } from "react-native"
+import { Text, View, Pressable, Image, StyleSheet } from "react-native"
 import { useSelector, useDispatch } from "react-redux"
 import * as ImagePicker from 'expo-image-picker'
 import Icon from 'react-native-vector-icons/MaterialIcons';
 
-const ProfileScreen = () => {
+const ProfileScreen = ({navigation}) => {
     const [image, setImage] = useState(null)
     const user = useSelector(state=> state.auth.value.email)
     console.log('user:', user);
@@ -27,20 +27,34 @@ const ProfileScreen = () => {
               <Text>Perfil</Text>
           </View>
           <View>
-            {
-                image ?
-                <Image source={{uri: image}} resizeMode='cover'  />
-                :
-                <Text>{user.charAt(0).toUpperCase()}</Text>
-
-            }
+          {
+                    user ? (
+                        image ? (
+                            <Image source={{ uri: image }} style={styles.profileImage} resizeMode='cover' />
+                        ) : (
+                            <Text style={styles.initial}>{user.charAt(0).toUpperCase()}</Text>
+                        )
+                    ) : (
+                        <Text style={styles.noUserText}>No hay usuario registrado</Text>
+                    )
+                }
           </View>
 
           <Pressable onPress={pickImage} >
               <Icon name="photo-camera" size={24} color="#fff" />
           </Pressable>
+
+          <Pressable onPress={()=>(navigation.navigate("Login"))}>
+            <Text>Inicia Sesion</Text>
+        </Pressable>
       </View>
   )
 }
 
 export default ProfileScreen
+
+const styles = StyleSheet.create({
+    profileImage: {
+        borderRadius: '50%'
+    }
+})

@@ -1,25 +1,31 @@
-import { View,Text, FlatList, Pressable } from "react-native"
+import { View,Text, FlatList, Pressable, Alert } from "react-native"
 import { useSelector } from "react-redux"
 import { usePostPurchaseMutation } from "../../services/purchaseApi";
 
 
 const CartScreen = () => {
     const cartItems = useSelector(state => state.cart.value.cartItems); 
+    const user = useSelector(state=> state.auth.value.email)
    const [triggerPost, result] = usePostPurchaseMutation()
     //console.log('Cart Items:', cartItems);
     
     
-    const CartFooter = () => {
-        return(
-            <Pressable
-            onPress={()=>{
-               triggerPost({cartItems, createdAt: Date.now()})      
-            }} 
-         > 
-             <Text>Comprar</Text>
-         </Pressable>
-        )
-    }
+   
+        const CartFooter = () => {
+            const handlePurchase = () => {
+                if (user) {
+                    triggerPost({ cartItems, createdAt: Date.now() });
+                } else {
+                    Alert.alert("Debe registrarse para realizar la compra");
+                }
+            };
+    
+            return (
+                <Pressable onPress={handlePurchase}> 
+                    <Text>Comprar</Text>
+                </Pressable>
+            );
+        };
 
     return(
         cartItems && cartItems.length > 0

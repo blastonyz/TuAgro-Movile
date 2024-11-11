@@ -65,6 +65,9 @@ const LoginScreen = ({navigation}) => {
             <Text>Perfil</Text>
         </Pressable>
 
+        <Pressable onPress={()=>(navigation.navigate("Registro"))}>
+            <Text>Registrate</Text>
+        </Pressable>
     </View>
   )
 }

@@ -7,7 +7,7 @@
     "icon": "./assets/icon.png",
     "userInterfaceStyle": "light",
     "splash": {
-      "image": "./assets/gradient.jpeg",
+      "image": "./assets/main-logoNew.png",
       "resizeMode": "contain",
       "backgroundColor": "#ffffff",
       "width": "100%",
@@ -19,7 +19,8 @@
         {
           "photosPermission": "The app accesses your photos to let you share them with your friends."
         }
-      ]
+      ],
+      "expo-font"
     ],
     "ios": {
       "supportsTablet": true
@@ -27,7 +28,7 @@
     "android": {
       "jsEngine": "hermes",
       "adaptiveIcon": {
-        "foregroundImage": "./assets/gradient.jpeg",
+        "foregroundImage": "./assets/main-logoNew.png",
         "backgroundColor": "#ffffff"
       }
     },
