@@ -3,6 +3,7 @@ import { useGetCategoriesQuery } from "../../services/productsApi";
 import { useDispatch } from "react-redux";
 import { setCategory } from "../../features/products/productsSlice";
 import CategorieCard from "../../components/CategorieCard";
+import { colors } from "../../utils/colors";
 
 
 const CategorieScreen = ({ navigation }) => {
@@ -75,7 +76,7 @@ const styles = StyleSheet.create({
     categriesMaintitle: {
         fontSize: 22,
         fontWeight: '600',
-        backgroundColor: '#EEE21C',
+        backgroundColor: colors.yellow,
         borderRadius: 20,
         width: 240,
         textAlign: 'center',
@@ -93,8 +94,6 @@ const styles = StyleSheet.create({
         width: '100%',
         justifyContent: 'center',
         alignItems: 'center',
-        // gap: 5,
-        //  margin: 10,
         paddingHorizontal: 0,
     },
 })

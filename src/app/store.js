@@ -5,8 +5,9 @@ import cartReducer from "../features/cart/cartSlice.js"
 import productsApi from "../services/productsApi.js";
 import {purchaseApi}  from "../services/purchaseApi.js";
 import { authApi } from "../services/authApi.js";
-//import  purchaseApi  from "../services/purchaseApi.js";
-console.log(authReducer);
+import { userApi } from "../services/userApi.js";
+
+
 
 export const store = configureStore({
     reducer: {
@@ -16,8 +17,9 @@ export const store = configureStore({
         [productsApi.reducerPath] : productsApi.reducer,
         [purchaseApi.reducerPath] : purchaseApi.reducer,
         [authApi.reducerPath] : authApi.reducer,
+        [userApi.reducerPath] : userApi.reducer,
     },
     middleware: (getDefaultMiddleware) =>
-        getDefaultMiddleware().concat(productsApi.middleware).concat(purchaseApi.middleware).concat(authApi.middleware)
+        getDefaultMiddleware().concat(productsApi.middleware).concat(purchaseApi.middleware).concat(authApi.middleware).concat(userApi.middleware)
     
 })

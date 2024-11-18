@@ -1,5 +1,5 @@
 import { View, StyleSheet, Image, Pressable, Text } from "react-native"
-
+import { colors } from "../utils/colors";
 
 const ProductsCard = ({item,navigation,dispatch,setProductId}) => {
    
@@ -31,7 +31,7 @@ export default ProductsCard;
 const styles = StyleSheet.create({
   cardContainer: {
     flexDirection: 'row',
-    borderColor: '#E6DA15',
+    borderColor: colors.gray,
     elevation: 5,
     borderWidth: 2,
     borderRadius: 8,
@@ -39,7 +39,7 @@ const styles = StyleSheet.create({
     width:'90%',
     marginLeft:10,
     alignSelf:'center',
-    backgroundColor: '#f9f9f9',
+    backgroundColor: colors.white,
   },
   leftContainer: {
     flex: 1,
@@ -48,7 +48,7 @@ const styles = StyleSheet.create({
   productTitle: {
     fontSize: 15,
     fontWeight: '600',
-    backgroundColor:'#04B400',
+    backgroundColor:colors.green,
     borderTopLeftRadius: 7,
     textAlign:'center',
     },
@@ -57,15 +57,15 @@ const styles = StyleSheet.create({
     marginBottom: 4,
     fontWeight:'500',
     fontSize:14,
-    backgroundColor:'rgba(4, 180, 0, 0.5)',
+    backgroundColor:colors.softGreen,
     width:'60%',
     borderTopRightRadius: 7,
     borderBottomRightRadius: 7, 
     textAlign:'center'
   },
   productBrand: {
-    color: '#757575',
-    backgroundColor:'#E6DA15',
+    color: colors.gray,
+    backgroundColor:colors.yellow,
     fontWeight:'500',
     fontSize:16,
     width:'70%',
@@ -85,16 +85,6 @@ const styles = StyleSheet.create({
     height: 180,
     borderRadius: 8,
   },
-  iconAdd:{
-    backgroundColor:'green',
-    width:55,
-    height:55,
-    alignItems:'center',
-    position:'absolute',
-    right:0,
-    bottom:0,
-    borderBottomRightRadius: 7, 
-  },
+
 });
 
-//      <Icon name='add-shopping-cart' size={45} color={'white'} style={styles.iconAdd}/>

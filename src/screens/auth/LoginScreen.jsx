@@ -1,88 +1,132 @@
-import { View,TextInput, Pressable, Text, StyleSheet } from "react-native";
+import { View, TextInput, Pressable, Text, StyleSheet, Image } from "react-native";
 import { useState, useEffect } from "react";
 import { useLoginMutation } from "../../services/authApi";
 import { useDispatch } from "react-redux";
 import { setUser } from "../../features/auth/authSlice";
+import { colors } from "../../utils/colors";
+import AuthContainer from "../../components/auth/AuthContainer";
+import NavButton from '../../components/ui/NavButton';
+import SectionTitle from "../../components/ui/SectionTItle";
+import FormContainer from "../../components/auth/FormContainer";
 
-const LoginScreen = ({navigation}) => {
+const LoginScreen = ({ navigation }) => {
 
 
     const [userLog, setUserLog] = useState({
-        email:"",
-        password:""
+        email: "",
+        password: ""
     })
 
     const [triggerLogin, result] = useLoginMutation()
 
     const dispatch = useDispatch()
 
-    useEffect(()=>{
-        if(result.status==="rejected"){
+    useEffect(() => {
+        if (result.status === "rejected") {
             console.log("Error al agregar el usuario", result.error.data?.error || result.error)
-        }else if(result.status==="fulfilled"){
-            console.log(`Sesion de ${result.data.email} iniciada con éxito`) 
-            
-            
+        } else if (result.status === "fulfilled") {
+            console.log(`Sesion de ${result.data.email} iniciada con éxito`)
+
             dispatch(setUser(result.data))
+            setUserLog({
+                email: "",
+                password: ""
+            })
         }
-    },[result])
+    }, [result])
 
     const handleSubmit = () => {
         triggerLogin(userLog)
     }
 
-    const handleChange = (name,text) => {
+    const handleChange = (name, text) => {
         setUserLog({
             ...userLog,
             [name]: text
         });
     }
-  return (
-    <View style={styles.mainInputs}>
-     <TextInput
-            placeholder="Email"
-            placeholderTextColor={'black'}
-            onChangeText={(text) =>handleChange('email', text)}
-            keyboardType="email-address"
-            value={userLog.email}
-            style={styles.input}
-        />
+    return (
+        <AuthContainer>
+           <View style={styles.form}>
+           <FormContainer cardWidth={{ width: '80%'}}>
+                <View style={styles.headLogo}>
+                    <Image
+                        source={require('../../../assets/main-logoNew.png')}
+                        style={styles.headImage}
+                    />
+                </View>
+                <View style={styles.mainInputs}>
+                    <TextInput
+                        placeholder="Email"
+                        placeholderTextColor={'black'}
+                        onChangeText={(text) => handleChange('email', text)}
+                        keyboardType="email-address"
+                        value={userLog.email}
+                        style={styles.input}
+                    />
 
-        <TextInput
-            placeholder="Password"
-            placeholderTextColor={'black'}
-            onChangeText={(text) =>handleChange('password',text)}
-            value={userLog.password}
-            style={styles.input}
-            secureTextEntry
+                    <TextInput
+                        placeholder="Password"
+                        placeholderTextColor={'black'}
+                        onChangeText={(text) => handleChange('password', text)}
+                        value={userLog.password}
+                        style={styles.input}
+                        secureTextEntry
 
-        />
+                    />
 
-        <Pressable onPress={handleSubmit}>
-            <Text>Enviar</Text>
-        </Pressable>
+                    <Pressable onPress={handleSubmit}>
+                        <SectionTitle text={'Enviar'} />
+                    </Pressable>
 
-        <Pressable onPress={()=>(navigation.navigate("Perfil"))}>
-            <Text>Perfil</Text>
-        </Pressable>
 
-        <Pressable onPress={()=>(navigation.navigate("Registro"))}>
-            <Text>Registrate</Text>
-        </Pressable>
-    </View>
-  )
+                   <View style={styles.buttonContainer}>
+                        <NavButton navigation={navigation} route={'Perfil'} text={'Perfil'} style={styles.loginButton}/>
+                        <NavButton navigation={navigation} route={'Registro'} text={'Registrate'} style={styles.loginButton}/>
+                   </View>
+
+
+                </View>
+                </FormContainer>
+                </View>
+        </AuthContainer>
+    )
 }
 
 export default LoginScreen
 
 const styles = StyleSheet.create({
+    form:{ 
+        flex: 1,
+    },
+    
+    headLogo: {
+        height: 100,
+        width: '100%',
+        alignItems: 'center',
+        marginTop: 20
+
+    },
+    headImage: {
+        height: 100,
+        width: '60%',
+        alignItems: 'center'
+    },
     mainInputs: {
-        justifyContent:'center',
-        alignItems:'center'
+        //justifyContent: 'center',
+        alignItems: 'center'
     },
-    input:{
-        backgroundColor:'yellow',
-        width:'50%',
-        margin:10
+   buttonContainer:{
+    alignItems:'center',
+   },
+    input: {
+        backgroundColor: colors.yellow,
+        width: '50%',
+        margin: 10,
+        borderRadius:10,
+        paddingHorizontal:10,
+        fontSize:16,
+        height:30,
     },
+ 
 })

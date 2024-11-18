@@ -26,7 +26,8 @@ const styles = StyleSheet.create({
         position:'relative',
         bottom:0,
         justifyContent: 'space-around',
-        backgroundColor:'#4CAF50'
+        backgroundColor:'#4CAF50',
+        height:40
     }
 })
 

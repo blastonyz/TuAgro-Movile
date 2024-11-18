@@ -1,4 +1,6 @@
 import { View, Pressable, Image, Text, StyleSheet} from "react-native"
+import { colors } from "../utils/colors"
+import SectionTitle from "./ui/SectionTItle"
 
 
 const CartView = ({ cartItems }) => {
@@ -7,7 +9,7 @@ const CartView = ({ cartItems }) => {
     return (
 
         <View style={styles.productMain}>
-
+           
             <View style={styles.priceSection}>
                 <Text style={styles.maintitle}>{cartItems.title}</Text>
                 <View style={styles.priceCont}>
@@ -40,11 +42,14 @@ const styles = StyleSheet.create({
         marginTop: 20,
         marginBottom: 20,
         justifyContent:'space-between',
+        borderColor:colors.gray,
+        borderBottomWidth:2,
+        borderTopWidth:2
     },
     maintitle: {
         fontSize: 14,
         fontWeight: '600',
-        backgroundColor: '#EEE21C',
+        backgroundColor: colors.yellow,
         width: 'auto',
         textAlign: 'center',
         paddingTop: 4,
@@ -61,21 +66,21 @@ const styles = StyleSheet.create({
     },
     priceCont: {
         width: '100%',
-        backgroundColor: 'rgba(4, 180, 4, 0.7)',
+        backgroundColor: colors.green,
     },
     priceText: {
         fontSize: 16,
         fontWeight: '500',
     },
     brandText: {
-        //backgroundColor:'rgba(4, 180, 4, 0.6)',
+        backgroundColor:colors.softGreen,
         fontSize: 16,
         fontWeight: '500',
         width: '100%'
 
     },
     stockText: {
-
+        backgroundColor:colors.greenShadow,
         fontSize: 16,
         fontWeight: '500',
         width: '100%'
@@ -83,6 +88,6 @@ const styles = StyleSheet.create({
 
     cartImg: {
         width: 100,
-        height: 100,
+        height: '100%',
     },
 })

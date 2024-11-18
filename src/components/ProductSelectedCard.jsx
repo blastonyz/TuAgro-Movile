@@ -1,5 +1,6 @@
 import { View, Pressable, Image, Text, StyleSheet, ScrollView } from "react-native"
 import Icon from "react-native-vector-icons/MaterialIcons"
+import { colors } from "../utils/colors"
 
 const ProductSelectedCard = ({ productSelected, navigation, addItem, dispatch }) => {
     return (
@@ -19,7 +20,7 @@ const ProductSelectedCard = ({ productSelected, navigation, addItem, dispatch })
                 </View>
                 <Image
                     source={{ uri: `${productSelected.image}` }}
-                    style={{ width: 250, height: 250 }}
+                    style={styles.productImage}
                 />
 
             </View>
@@ -60,13 +61,16 @@ const styles = StyleSheet.create({
         marginHorizontal: 'auto',
         marginTop: 20,
         marginBottom:20,
-        //justifyContent:'space-around',
+        backgroundColor:colors.softGreen,
+        borderRadius:20,
+        borderColor:colors.gray,
+        borderWidth:3,
     },
     maintitle: {
         fontSize: 18,
         fontWeight: '600',
         marginTop: 20,
-        backgroundColor: '#EEE21C',
+        backgroundColor: colors.yellow,
         borderRadius: 20,
         width: 'auto',
         textAlign: 'center',
@@ -79,9 +83,14 @@ const styles = StyleSheet.create({
         flexDirection: 'row',
         justifyContent: 'space-between',
         marginTop: 25,
-        borderColor:'gray',
-        borderWidth:2,
+        borderColor:colors.gray,
+        borderTopWidth:2,
+        borderBottomWidth:2,
         borderRadius:10
+    },
+    productImage:{
+        width:'60%',
+        height:200
     },
     priceSection: {
         flexDirection: 'column',
@@ -90,24 +99,26 @@ const styles = StyleSheet.create({
     },
     priceCont:{
         width:'100%',
-        backgroundColor:'rgba(4, 180, 4, 0.7)',
+        backgroundColor:colors.green,
+        borderTopLeftRadius:8
     },
     priceText: {
         fontSize:16,
         fontWeight:'500',
     },
     brandText: {
-        backgroundColor:'rgba(4, 180, 4, 0.6)',
+        backgroundColor:colors.greenShadow,
         fontSize:16,
         fontWeight:'500',
         width:'100%'
         
     },
     stockText: {
-        backgroundColor:'rgba(250, 150, 14, 0.7)',
+        backgroundColor:colors.yellow,
         fontSize:16,
         fontWeight:'500',
-        width:'100%'
+        width:'100%',
+        borderBottomLeftRadius:8,
     },
     descriptionText: {
         marginTop: 20,
@@ -116,14 +127,12 @@ const styles = StyleSheet.create({
         flexDirection: 'row',
         justifyContent: 'space-between',
         marginTop: 20,
-        borderColor:'gray',
-        borderWidth:2,
         borderRadius:20,
-        backgroundColor:'rgba(4, 180, 4, 0.8)',
+        backgroundColor:colors.softGreen,
     },
     addContainer: {
         flexDirection: 'row',
-        backgroundColor: '#EEE21C',
+        backgroundColor: colors.yellow,
         borderRadius: 15,
         width: 110
     },

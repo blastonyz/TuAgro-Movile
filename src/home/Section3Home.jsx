@@ -1,5 +1,6 @@
 import { Text, View, ImageBackground,StyleSheet, Pressable } from "react-native"
 import Icon from 'react-native-vector-icons/MaterialIcons'
+import { colors } from "../utils/colors"
 
 const Section3Home = () => {
     return(
@@ -59,13 +60,13 @@ const styles = StyleSheet.create({
     },
     text1:{
         fontSize:24,
-        color:'#FFFFFF',
+        color:colors.white,
         fontWeight:'bold',
         
     },
     text2:{
         fontSize:20,
-        color:'#E6DA15',
+        color:colors.yellow,
         alignItems:'center',
         marginLeft:'auto'
     },
@@ -76,12 +77,12 @@ const styles = StyleSheet.create({
     },
     text3:{
         fontSize:14,
-        color:'#FFFFFF',
+        color:colors.white,
         fontWeight:'bold',
         width:'80%',
     },
     contactSec3Container:{
-        backgroundColor:'#E6DA15',
+        backgroundColor:colors.yellow,
         alignItems:'center',
         borderRadius:25,
         width:'50%',

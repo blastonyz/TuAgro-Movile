@@ -1,5 +1,6 @@
 import { Image, Text,StyleSheet, View } from "react-native";
 import Icon  from "react-native-vector-icons/MaterialIcons";
+import { colors } from "../utils/colors";
 
 const Section2Home = () => {
     return(
@@ -14,15 +15,15 @@ const Section2Home = () => {
 
             <View style={styles.secondTextContainer}>
                 <Text style={styles.secondText}>Venta de Insumos</Text>
-                <Icon name='check-circle' color={'orange'} size={26} style={styles.secondIcon}/>
+                <Icon name='check-circle' color={colors.yellow} size={26} style={styles.secondIcon}/>
             </View>
             <View style={styles.secondTextContainer}>
                 <Text style={styles.secondText}>Gestion de Comercio Exterior</Text>
-                <Icon name='check-circle' color={'orange'} size={26} style={styles.secondIcon}/>
+                <Icon name='check-circle' color={colors.yellow} size={26} style={styles.secondIcon}/>
             </View>
             <View style={styles.secondTextContainer}>
                 <Text style={styles.secondText3}>Asesoramiento Profesional sin costo</Text>
-                <Icon name='check-circle' color={'orange'} size={26} style={styles.secondIcon}/>
+                <Icon name='check-circle' color={colors.yellow} size={26} style={styles.secondIcon}/>
             </View>
       </View>
           <View style={styles.secondImgCont}>
@@ -59,7 +60,7 @@ const styles = StyleSheet.create({
         fontSize:22,
         fontWeight:'600',
         margin:'auto',
-        backgroundColor:'#EEE21C',
+        backgroundColor: colors.yellow,
         borderRadius:20,
         width:240,
         textAlign:'center',

@@ -1,16 +1,14 @@
-import { View,Text, FlatList, Pressable, Alert } from "react-native"
+import { View,Text, FlatList, Pressable, Alert, StyleSheet } from "react-native"
 import { useSelector } from "react-redux"
 import { usePostPurchaseMutation } from "../../services/purchaseApi";
+import SectionTitle from "../../components/ui/SectionTItle";
 import CartView from "../../components/CartView";
 
 const CartScreen = () => {
     const cartItems = useSelector(state => state.cart.value.cartItems); 
     const user = useSelector(state=> state.auth.value.email)
    const [triggerPost, result] = usePostPurchaseMutation()
-    //console.log('Cart Items:', cartItems);
     
-    
-   
         const CartFooter = () => {
             const handlePurchase = () => {
                 if (user) {
@@ -30,14 +28,21 @@ const CartScreen = () => {
     return(
         cartItems && cartItems.length > 0
         ? (
-            <FlatList
-                data={cartItems}
-                keyExtractor={(item) => item.id.toString()}
-                renderItem={({ item }) => (
-                    <CartView cartItems={item} />
-                  )}
-                ListFooterComponent={<CartFooter/>}
-            />               
+
+           <View style={styles.cartContainer}>
+                <SectionTitle text={'Tus Productos'}
+                size={22}
+                weight={'600'}
+                />
+                <FlatList
+                    data={cartItems}
+                    keyExtractor={(item) => item.id.toString()}
+                    renderItem={({ item }) => (
+                        <CartView cartItems={item} />
+                      )}
+                    ListFooterComponent={<CartFooter/>}
+                />        
+           </View>       
         ) : (
             <Text>No hay items en el carrito</Text>
         )
@@ -45,3 +50,9 @@ const CartScreen = () => {
 }
 
 export default CartScreen
+
+const styles = StyleSheet.create({
+    cartContainer:{
+        marginTop:20
+    },
+})

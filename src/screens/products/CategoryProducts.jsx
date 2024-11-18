@@ -1,9 +1,11 @@
  import {useEffect, useState} from 'react'
- import { FlatList, Text, View, ActivityIndicator, Pressable,StyleSheet} from 'react-native'
+ import { FlatList, Text, View, ActivityIndicator, StyleSheet} from 'react-native'
  import { useSelector, useDispatch } from 'react-redux';
  import { useGetProductsByCategoryQuery } from '../../services/productsApi';
  import { setProductId } from '../../features/products/productsSlice';
  import ProductsCard from '../../components/ProductsCard';
+ import { colors } from '../../utils/colors';
+ import SectionTitle from '../../components/ui/SectionTItle';
 
  const CategoryProducts = ({navigation}) => {
   const [productsFiltered,setProductsFiltered] = useState("");
@@ -44,12 +46,26 @@
             <FlatList
             data={productsFiltered}
             keyExtractor={item => item.id.toString()}
-            ListHeaderComponent={() => (
+            ListHeaderComponent={() => {
+            return (
+              <>
+                {productsFiltered && categoryFiltered && categoryFiltered.length > 0 ? (
 
-              <View style={styles.categriesMainContainer}>
-                  <Text style={styles.categriesMaintitle}>{categoryFiltered[0].category}</Text>
-              </View>
-          )}
+               <View style={styles.categriesMainContainer}>
+                    <SectionTitle 
+                    text={categoryFiltered[0].category} 
+                    size={22} 
+                    weight={'600'}
+                    />
+               </View>
+                ) : (
+                  <View style={styles.categriesMainContainer}>
+                    <Text >Categoría no disponible</Text>
+                  </View>
+                )}
+              </>
+            );
+            }}
             renderItem={RenderCategoryProducts}
             contentContainerStyle={styles.listContainer}  
             />
@@ -66,6 +82,7 @@
     flexGrow: 1,
     paddingBottom: 10,
     marginTop:20,
+    marginBottom:20,
    },
    categriesMainContainer: {
     justifyContent: 'center',
@@ -78,7 +95,7 @@
     fontSize: 22,
     fontWeight: '600',
     margin: 'auto',
-    backgroundColor: '#EEE21C',
+    backgroundColor: colors.yellow,
     borderRadius: 20,
     width: 240,
     textAlign: 'center',

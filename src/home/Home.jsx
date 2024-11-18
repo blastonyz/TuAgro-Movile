@@ -7,6 +7,7 @@ import { useDispatch } from "react-redux"
 useDispatch
 import { setCategory } from "../features/products/productsSlice"
 import { useNavigation } from "@react-navigation/native"
+import { colors } from "../utils/colors"
 
 const Home = () => {
   const navigation = useNavigation();
@@ -132,7 +133,7 @@ const styles = StyleSheet.create({
     fontFamily:'ChelseaMarket',
     paddingTop: '30%',
     paddingLeft: '10%',
-    textShadowColor: 'rgba(91, 255, 51 , 0.75)',
+    textShadowColor: colors.greenShadow,
     textShadowOffset: { width: 20, height: 0 },
     textShadowRadius: 20,
   },
@@ -142,12 +143,12 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
     paddingTop: '10%',
     paddingLeft: '10%',
-    textShadowColor: '#5bff33',
+    textShadowColor: colors.greenShadow,
     textShadowOffset: { width: 0, height: 0 },
     textShadowRadius: 30,
   },
   button: {
-    backgroundColor: '#04B404',
+    backgroundColor: colors.green,
     paddingVertical: 10,
     paddingHorizontal: 20,
     borderRadius: 20,
@@ -192,7 +193,7 @@ const styles = StyleSheet.create({
   catTitle: {
     fontSize: 22,
     fontFamily:'ChelseaMarket',
-    backgroundColor:'#EEE21C',
+    backgroundColor:colors.yellow,
     padding:10,
     borderRadius:20,
     elevation:5,
@@ -205,7 +206,7 @@ const styles = StyleSheet.create({
     fontSize: 18,
     fontWeight:'600',
     borderRadius: 10,
-    borderColor: '#04B404',
+    borderColor: colors.green,
     borderWidth: 2,
     paddingTop: 15,
   },

@@ -60,7 +60,13 @@ const Navigator = () => {
   })} />
       <Drawer.Screen name="Nosotros" component={Side} options={{ drawerLabel: () => <Text style={styles.drawerItemLabel}>Nosotros</Text> }} />
       <Drawer.Screen name="Contacto" component={Side} options={{ drawerLabel: () => <Text style={styles.drawerItemLabel}>Contacto</Text> }} />
-      <Drawer.Screen name="Autenticacion" component={AuthStack} options={{ drawerLabel: () => <Text style={styles.drawerItemLabel}>Registro</Text> }} />
+      <Drawer.Screen name="Autenticacion" component={AuthStack} options={({ navigation }) => ({
+    drawerLabel: () => (
+      <Pressable onPress={() => navigation.navigate('Registro', { screen: 'AuthStack' })}>
+        <Text style={styles.drawerItemLabel}>Registro</Text>
+      </Pressable>
+    ),
+  })} />
     </Drawer.Navigator>
   )
 }

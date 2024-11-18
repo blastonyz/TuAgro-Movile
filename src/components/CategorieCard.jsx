@@ -1,5 +1,5 @@
 import {View, Pressable, Image,StyleSheet,Text} from 'react-native'
-
+import { colors } from '../utils/colors'
 
 const CategorieCard = ({ item, dispatch, setCategory, navigation }) => {
     return (
@@ -11,6 +11,7 @@ const CategorieCard = ({ item, dispatch, setCategory, navigation }) => {
             }}>
                 <View style={styles.categorieCard}>
                     <Text style={styles.categorieTitle}>{item.title}</Text>
+                    
                     <Image source={{ uri: item.image }} style={styles.categorieImgs} />
                 </View>
             </Pressable>
@@ -24,7 +25,7 @@ const styles = StyleSheet.create({
     categorieCard: {
         flex: 1,
         margin: 20,
-        borderColor: 'gray',
+        borderColor: colors.gray,
         borderTopWidth: 2,
         borderBottomWidth: 7,
         borderRightWidth: 7,
@@ -42,7 +43,7 @@ const styles = StyleSheet.create({
         fontSize: 20,
         fontWeight: '600',
         borderRadius: 14,
-        backgroundColor:'rgba(4, 180, 0, 0.5)',
+        backgroundColor:colors.softGreen,
         borderColor: '#04B404',
         borderWidth: 2,
     },
