@@ -8,6 +8,7 @@ import AuthContainer from "../../components/auth/AuthContainer";
 import NavButton from '../../components/ui/NavButton';
 import SectionTitle from "../../components/ui/SectionTItle";
 import FormContainer from "../../components/auth/FormContainer";
+import { insertSessions } from "../../db";
 
 const LoginScreen = ({ navigation }) => {
 
@@ -28,6 +29,10 @@ const LoginScreen = ({ navigation }) => {
             console.log(`Sesion de ${result.data.email} iniciada con éxito`)
 
             dispatch(setUser(result.data))
+            insertSessions(result.data)
+                    .then((result)=>console.log("Éxito al guardar usuario en la db",result))
+                    .catch((error)=>console.log("Error al guardar usuario en la db", error))
+            
             setUserLog({
                 email: "",
                 password: ""
@@ -48,11 +53,12 @@ const LoginScreen = ({ navigation }) => {
     return (
         <AuthContainer>
            <View style={styles.form}>
-           <FormContainer cardWidth={{ width: '80%'}}>
+           <FormContainer cardWidth={{ width: '85%'}}>
                 <View style={styles.headLogo}>
                     <Image
                         source={require('../../../assets/main-logoNew.png')}
                         style={styles.headImage}
+                        resizeMode="contain"
                     />
                 </View>
                 <View style={styles.mainInputs}>

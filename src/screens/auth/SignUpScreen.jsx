@@ -27,6 +27,7 @@ const SignUpScreen = ({ navigation }) => {
         } else if (result.status === "fulfilled") {
             console.log("Usuario agregado con éxito")
             dispatch(setUser(result.data))
+            navigation.navigate("Login")
         }
     }, [result])
 
@@ -47,11 +48,12 @@ const SignUpScreen = ({ navigation }) => {
     return (
         <AuthContainer>
          <View style={styles.form}>
-         <FormContainer cardWidth={{ width: '80%'}}>
+         <FormContainer cardWidth={{ width: '85%'}}>
                 <View style={styles.headLogo}>
                     <Image
                         source={require('../../../assets/main-logoNew.png')}
                         style={styles.headImage}
+                        resizeMode="contain"
                     />
                 </View>
                 <SectionTitle text={'Registrate'}/>

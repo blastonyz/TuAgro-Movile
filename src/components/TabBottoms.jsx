@@ -2,9 +2,12 @@ import React from 'react'
 import { View,Text,StyleSheet, Pressable } from 'react-native'
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons'
 import { useNavigation } from '@react-navigation/native';
+import { useSelector } from 'react-redux';
 
  const TabBottoms = () => {
   const navigation = useNavigation();
+  const user = useSelector(state => state.auth.value.email);
+  console.log('user:',user);
   return (
     <View style={styles.footer}>
       <Pressable onPress={() => navigation.navigate('Productos', { screen: 'CategoriesRender' })}>
@@ -13,7 +16,7 @@ import { useNavigation } from '@react-navigation/native';
       <Pressable onPress={() => navigation.navigate('Productos', { screen: 'Carrito' })}>
         <MaterialIcons name='shopping-cart' size={30}/>
       </Pressable>
-      <Pressable onPress={() => navigation.navigate('Autenticacion', { screen: 'Perfil' })}>
+      <Pressable onPress={() => navigation.navigate('Autenticacion', { screen: 'Perfil' })} >
         <MaterialIcons name='account-circle' size={30}/>
       </Pressable>
     </View>

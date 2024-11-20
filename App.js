@@ -9,6 +9,11 @@ import { NavigationContainer } from '@react-navigation/native';
 import { useFonts } from 'expo-font';
 import { useEffect } from 'react';
 import * as SplashScreen from 'expo-splash-screen';
+import { createSessionsTable } from './src/db';
+
+createSessionsTable()
+.then((result)=>console.log('local db runing',result))
+.catch((error)=>console.log(error))
 
 SplashScreen.preventAutoHideAsync();
 
@@ -43,11 +48,3 @@ export default function App() {
   );
 }
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
