@@ -17,3 +17,19 @@ export const insertSessions = ({email,token,localId}) => {
     })
     return promise
 }
+
+export const fetchSession = () => {
+    const promise = new Promise((resolved,rejected)=>{
+        const query = 'SELECT * FROM sessions'
+        db.transaction(tx=>tx.executeSql(query,[],(_,result)=>resolved(result.rows._array),(_,result)=>rejected(result)))
+    })
+    return promise
+}
+
+export const clearSessions= () => {
+    const promise = new Promise((resolved,rejected)=>{
+        const query = "DELETE FROM sessions" 
+        db.transaction(tx=>{tx.executeSql(query,[],(_, result)=>resolved(result),(_,error)=>rejected(error))})
+    })
+    return promise
+}

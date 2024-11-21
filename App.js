@@ -9,7 +9,7 @@ import { NavigationContainer } from '@react-navigation/native';
 import { useFonts } from 'expo-font';
 import { useEffect } from 'react';
 import * as SplashScreen from 'expo-splash-screen';
-import { createSessionsTable } from './src/db';
+import { createSessionsTable } from './src/db/index';
 
 createSessionsTable()
 .then((result)=>console.log('local db runing',result))

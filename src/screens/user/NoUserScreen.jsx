@@ -1,34 +1,22 @@
-import { Text, View, StyleSheet,Button } from "react-native"
-//import NavButton from "../../components/ui/NavButton"
-//import AuthContainer from "../../components/auth/AuthContainer"
-//import FormContainer from "../../components/auth/FormContainer"
-//import { useCamera } from "../../components/device/UseCamera"
-//import * as ImagePicker from 'expo-image-picker';
+import {  View, StyleSheet } from "react-native"
+import NavButton from "../../components/ui/NavButton"
+import AuthContainer from "../../components/auth/AuthContainer"
+import FormContainer from "../../components/auth/FormContainer"
+import SectionTitle from "../../components/ui/SectionTItle"
 
 
-const NoUserScreen = () => {
-    const pickImage = async () => {
-        const permission = await ImagePicker.requestCameraPermissionsAsync();
-        console.log('Permiso:', permission);
-        if (permission.granted) {
-            try {
-                let result = await ImagePicker.launchCameraAsync({
-                    allowsEditing: true,
-                    quality: 0.5,
-                });
-                console.log('Camera Result:', result);
-            } catch (error) {
-                console.log('Error:', error);
-            }
-        } else {
-            console.log('Permiso denegado');
-        }
-    };
+
+const NoUserScreen = ({navigation}) => {
+    
 
     return (
-        <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
-            <Button title="Abrir Cámara" onPress={pickImage} />
-        </View>
+        <AuthContainer style={styles.mainNoUs}>
+            <FormContainer cardWidth={{width:'85%'}}>
+                <SectionTitle text={'No hay usuario '}/>
+                <NavButton navigation={navigation} route={'Resgistro'} text={'Registrate'}/>
+                <NavButton navigation={navigation} route={'Login'} text={'Login'}/>
+            </FormContainer>
+        </AuthContainer>
     );
 };
 
@@ -37,7 +25,6 @@ export default NoUserScreen
 const styles = StyleSheet.create({
     mainNoUs:{
         flex:1,
-        height:800
     },
     authLinks: {
         paddingVertical: 25,

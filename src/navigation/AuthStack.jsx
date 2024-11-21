@@ -3,7 +3,7 @@ import SignUpScreen from "../screens/auth/SignUpScreen";
 import LoginScreen from "../screens/auth/LoginScreen";
 import UserStack from "./UserStack";
 //import ProfileScreen from "../screens/user/ProfileScreen";
-import UserStack from "./UserStack";
+
 
 const Stack = createNativeStackNavigator();
 

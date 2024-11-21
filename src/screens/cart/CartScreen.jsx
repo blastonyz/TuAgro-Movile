@@ -12,7 +12,7 @@ const CartScreen = () => {
         const CartFooter = () => {
             const handlePurchase = () => {
                 if (user) {
-                    triggerPost({ cartItems, createdAt: Date.now() });
+                    triggerPost({ cartItems, createdAt: Date.now(),user });
                 } else {
                     Alert.alert("Debe registrarse para realizar la compra");
                 }

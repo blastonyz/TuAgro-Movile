@@ -1,12 +1,46 @@
-import React from 'react'
-import { View,Text,StyleSheet, Pressable } from 'react-native'
+import {useEffect} from 'react'
+import { View,StyleSheet, Pressable } from 'react-native'
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons'
 import { useNavigation } from '@react-navigation/native';
-import { useSelector } from 'react-redux';
+import { useSelector,useDispatch } from 'react-redux';
+import { setUser } from '../features/auth/authSlice';
+import { fetchSession } from '../db/index';
+import { useGetProfilePictureQuery } from '../services/userApi';
+import { setProfilePicture } from '../features/auth/authSlice';
 
  const TabBottoms = () => {
   const navigation = useNavigation();
   const user = useSelector(state => state.auth.value.email);
+  const localId = useSelector(state=>state.auth.value.localId)
+  console.log('localId: ',localId);
+  
+  const dispatch = useDispatch()
+
+  const {data:profilePicture, isLoading, error} = useGetProfilePictureQuery(localId)
+
+  console.log('data: ',profilePicture)
+
+  useEffect(() => {
+    if(!user){
+      (async()=>{
+        try {
+          const session = await fetchSession()
+          dispatch(setUser(session[0]))
+        } catch (error) {
+          console.log('error al recuperar sesion',error);
+          
+        }
+      })()
+    }
+  }, [user])
+  
+  useEffect(()=>{
+    if(profilePicture){
+        dispatch(setProfilePicture(profilePicture))
+    }
+    
+},[profilePicture])
+
   console.log('user:',user);
   return (
     <View style={styles.footer}>

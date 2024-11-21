@@ -1,14 +1,14 @@
 import { View, TextInput, Pressable, Text, StyleSheet, Image } from "react-native";
 import { useState, useEffect } from "react";
 import { useLoginMutation } from "../../services/authApi";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { setUser } from "../../features/auth/authSlice";
 import { colors } from "../../utils/colors";
 import AuthContainer from "../../components/auth/AuthContainer";
 import NavButton from '../../components/ui/NavButton';
 import SectionTitle from "../../components/ui/SectionTItle";
 import FormContainer from "../../components/auth/FormContainer";
-import { insertSessions } from "../../db";
+import { insertSessions, fetchSession } from "../../db/index.js";
 
 const LoginScreen = ({ navigation }) => {
 
@@ -25,14 +25,22 @@ const LoginScreen = ({ navigation }) => {
     useEffect(() => {
         if (result.status === "rejected") {
             console.log("Error al agregar el usuario", result.error.data?.error || result.error)
-        } else if (result.status === "fulfilled") {
-            console.log(`Sesion de ${result.data.email} iniciada con éxito`)
-
+        } else if (result.isSuccess) {
+            //console.log(result.data)
             dispatch(setUser(result.data))
-            insertSessions(result.data)
-                    .then((result)=>console.log("Éxito al guardar usuario en la db",result))
-                    .catch((error)=>console.log("Error al guardar usuario en la db", error))
             
+              insertSessions({
+                email: result.data.email,
+                token: result.data.idToken,
+                localId: result.data.localId
+            })
+            .then(() => {
+                console.log("Éxito al guardar usuario en la db");
+            })
+            .catch((error) => console.log("Error al guardar usuario en la db", error));
+            
+                
+                
             setUserLog({
                 email: "",
                 password: ""

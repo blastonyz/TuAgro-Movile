@@ -13,7 +13,7 @@ export const authSlice = createSlice({
     reducers: {
         setUser: (state,action) => {
             state.value.email = action.payload.email
-            state.value.profilePicture = action.payload.profilePicture
+            state.value.token = action.payload.token
             state.value.localId = action.payload.localId
         },
         clearUser: (state) => {
