@@ -27,14 +27,21 @@ export const cartSlice = createSlice({
                     return item
                 })
             }
+            state.value.total = state.value.cartItems.reduce((acc, item) => acc + (item.price || 0), 0);
+        
         },
         removeItem: (state,action) => {
          state.value.cartItems = state.value.cartItems.filter(item => !item.id == action.payload) 
          state.value.cartLength -= 1
+         state.value.total = state.value.cartItems.reduce((acc, item) => acc + (item.price || 0), 0);
+        
+        },
+        totalValue: (state) => {
+            state.value.total = state.value.cartItems.reduce((acc,item) => acc + item.price,0) 
         }
     }
 })
 
-export const {addItem} = cartSlice.actions;
+export const {addItem,removeItem, totalValue}  = cartSlice.actions;
 
 export default cartSlice.reducer;

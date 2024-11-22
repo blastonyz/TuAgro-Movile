@@ -29,7 +29,7 @@ const productsApi = createApi({
         })
     })
 })
-//console.log(productsApi);
+
 
 export const {useGetCategoriesQuery, useGetProductsQuery,useGetProductsByCategoryQuery, useGetProductQuery} = productsApi;
 export default productsApi;

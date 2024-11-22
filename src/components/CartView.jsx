@@ -1,10 +1,17 @@
 import { View, Pressable, Image, Text, StyleSheet} from "react-native"
 import { colors } from "../utils/colors"
-import SectionTitle from "./ui/SectionTItle"
+import  Icon  from "react-native-vector-icons/MaterialIcons"
+import { useDispatch } from "react-redux"
+import { removeItem } from "../features/cart/cartSlice"
+
 
 
 const CartView = ({ cartItems }) => {
-    //console.log('cart view: ', cartItems);
+    const dispatch = useDispatch()
+
+    const handleDelete = (id) => {
+        dispatch(removeItem(id))
+    }
 
     return (
 
@@ -17,7 +24,10 @@ const CartView = ({ cartItems }) => {
                 </View>
                 <Text style={styles.brandText}>Marca: {cartItems.brand}</Text>
                 <Text style={styles.stockText}>Stock: {cartItems.stock}</Text>
-
+                <Pressable onPress={() => handleDelete(cartItems.id)} style={styles.deleteItem}> 
+                    <Text style={styles.deleteText}>Quitar</Text>
+                    <Icon name="delete" size={25} color={'gray'}/>
+                </Pressable>
             </View>
 
             <View style={styles.imgSection}>
@@ -26,7 +36,7 @@ const CartView = ({ cartItems }) => {
                     style={styles.cartImg}
                 />
             </View>
-
+        
         </View>
     )
 }
@@ -84,6 +94,16 @@ const styles = StyleSheet.create({
         fontSize: 16,
         fontWeight: '500',
         width: '100%'
+    },
+    deleteItem:{
+        flexDirection:'row',
+        backgroundColor:colors.softGreen,
+       justifyContent:'space-around'
+    },
+    deleteText:{
+        fontSize: 16,
+        fontWeight: '500',
+        color:colors.gray,
     },
 
     cartImg: {

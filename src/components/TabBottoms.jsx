@@ -53,6 +53,9 @@ import { setProfilePicture } from '../features/auth/authSlice';
       <Pressable onPress={() => navigation.navigate('Autenticacion', { screen: 'Perfil' })} >
         <MaterialIcons name='account-circle' size={30}/>
       </Pressable>
+      <Pressable onPress={() => navigation.navigate('Productos', { screen: 'Compras' })} >
+        <MaterialIcons name='receipt' size={30}/>
+      </Pressable>
     </View>
   )
 }

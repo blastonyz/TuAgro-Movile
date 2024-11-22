@@ -10,9 +10,22 @@ export const purchaseApi = createApi({
                 url: 'purchases.json',
                 method: 'POST',
                 body: purchase 
-            })
-        })
+            }),  
+        }),
+        getPurchases: builder.query({
+            query:(user) =>  `purchases.json?orderBy="user"&equalTo="${encodeURIComponent(user)}"`,
+            transformResponse: (response) => {
+               
+                return response
+                    ? Object.values(response).map(item => ({
+                        cartItems: item.cartItems,
+                        createdAt: item.createdAt,
+                        total: item.total
+                    }))
+                    : [];
+            }
+        })  
     })
 })
 
-export const { usePostPurchaseMutation } = purchaseApi;
+export const { usePostPurchaseMutation, useGetPurchasesQuery } = purchaseApi;
