@@ -62,8 +62,8 @@ const Navigator = () => {
       <Drawer.Screen name="Contacto" component={Side} options={{ drawerLabel: () => <Text style={styles.drawerItemLabel}>Contacto</Text> }} />
       <Drawer.Screen name="Autenticacion" component={AuthStack} options={({ navigation }) => ({
     drawerLabel: () => (
-      <Pressable onPress={() => navigation.navigate('Autenticacion', { screen: 'Registro' })}>
-        <Text style={styles.drawerItemLabel}>Registro</Text>
+      <Pressable onPress={() => navigation.navigate('Autenticacion', { screen: 'Login' })}>
+        <Text style={styles.drawerItemLabel}>Sesion</Text>
       </Pressable>
     ),
   })} />

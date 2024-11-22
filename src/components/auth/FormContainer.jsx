@@ -17,7 +17,7 @@ const styles = StyleSheet.create({
         heigth:'55%',
         alignSelf: 'center',
         marginTop: 20,
-        justifyContent: 'flex-start',
+        //justifyContent: 'flex-start',
         borderWidth: 2,
         borderColor: 'yellow',
         borderRadius: 20,

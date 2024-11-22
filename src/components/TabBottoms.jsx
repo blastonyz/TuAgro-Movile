@@ -18,7 +18,7 @@ import { setProfilePicture } from '../features/auth/authSlice';
 
   const {data:profilePicture, isLoading, error} = useGetProfilePictureQuery(localId)
 
-  console.log('data: ',profilePicture)
+
 
   useEffect(() => {
     if(!user){
@@ -36,7 +36,7 @@ import { setProfilePicture } from '../features/auth/authSlice';
   
   useEffect(()=>{
     if(profilePicture){
-        dispatch(setProfilePicture(profilePicture))
+        dispatch(setProfilePicture(profilePicture.image))
     }
     
 },[profilePicture])
