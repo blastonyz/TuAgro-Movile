@@ -22,8 +22,11 @@
         "foregroundImage": "./assets/main-logoNew.png",
         "backgroundColor": "#ffffff"
       },
-      "permissions": ["CAMERA"]
-  
+      "permissions": [
+        "android.permission.CAMERA",
+        "android.permission.RECORD_AUDIO"
+      ],
+      "package": "com.blastonyz.TuAgro"
     },
     "plugins": [
       [
@@ -37,6 +40,11 @@
     ],
     "web": {
       "favicon": "./assets/favicon.png"
+    },
+    "extra": {
+      "eas": {
+        "projectId": "58ed9324-02cf-4a1d-8d74-abb126bdfd7e"
+      }
     }
   }
 }
