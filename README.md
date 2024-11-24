@@ -1,6 +1,8 @@
 #PROYECTO TU AGRO
 ##DESARROLLADO EN REACT NATIVE & EXPO GO
 
+## **LINK DE DESCARGA DEL APK** [APK](https://drive.google.com/file/d/1lt6xDKnMc2BYWEEobeDZLeUWQ3iBIag0/view?usp=sharing)
+
 ### Descripcion
 
  TuAgro es un e-commerce orientado a ventas en el sector agroindustrial, donde los productores pueden acudir para abastecerse de insumos, recibir asesoramiento tecnico y presupuestos sin cargo
