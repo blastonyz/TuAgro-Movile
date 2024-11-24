@@ -1,4 +1,4 @@
-import {  View, StyleSheet } from "react-native"
+import {  StyleSheet } from "react-native"
 import NavButton from "../../components/ui/NavButton"
 import AuthContainer from "../../components/auth/AuthContainer"
 import FormContainer from "../../components/auth/FormContainer"
@@ -13,7 +13,7 @@ const NoUserScreen = ({navigation}) => {
         <AuthContainer style={styles.mainNoUs}>
             <FormContainer cardWidth={{width:'85%'}}>
                 <SectionTitle text={'No hay usuario '}/>
-                <NavButton navigation={navigation} route={'Resgistro'} text={'Registrate'}/>
+                <NavButton navigation={navigation} route={'Registro'} text={'Registrate'}/>
                 <NavButton navigation={navigation} route={'Login'} text={'Login'}/>
             </FormContainer>
         </AuthContainer>

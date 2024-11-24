@@ -10,8 +10,6 @@ const CategorieScreen = ({ navigation }) => {
 
     const { data: categories, error, isLoading } = useGetCategoriesQuery()
 
-    //console.log('categ: ',categories);
-
     const dispatch = useDispatch()
 
     const categoriesRender = ({ item }) => {

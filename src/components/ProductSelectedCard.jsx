@@ -1,4 +1,4 @@
-import { View, Pressable, Image, Text, StyleSheet, ScrollView } from "react-native"
+import { View, Pressable, Image, Text, StyleSheet, ScrollView,Alert } from "react-native"
 import Icon from "react-native-vector-icons/MaterialIcons"
 import { colors } from "../utils/colors"
 
@@ -18,18 +18,21 @@ const ProductSelectedCard = ({ productSelected, navigation, addItem, dispatch })
                     <Text style={styles.stockText}>Stock: {productSelected.stock}</Text>
 
                 </View>
+                {productSelected.image?
                 <Image
                     source={{ uri: `${productSelected.image}` }}
                     style={styles.productImage}
                 />
-
+                :
+                null
+                }
             </View>
             <Text style={styles.descriptionText}>Descripcion: {productSelected.longDescription}</Text>
 
             <View style={styles.buttonsContainer}>
                 <Pressable onPress={() => {
                     dispatch(addItem(productSelected))
-
+                    Alert.alert("Producto agregado!");
                 }}>
                     <View style={styles.addContainer}>
                         <Text style={styles.addText}>Agregar</Text>

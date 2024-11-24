@@ -12,13 +12,10 @@ import { setProfilePicture } from '../features/auth/authSlice';
   const navigation = useNavigation();
   const user = useSelector(state => state.auth.value.email);
   const localId = useSelector(state=>state.auth.value.localId)
-  console.log('localId: ',localId);
   
   const dispatch = useDispatch()
 
   const {data:profilePicture, isLoading, error} = useGetProfilePictureQuery(localId)
-
-
 
   useEffect(() => {
     if(!user){
@@ -41,7 +38,7 @@ import { setProfilePicture } from '../features/auth/authSlice';
     
 },[profilePicture])
 
-  console.log('user:',user);
+
   return (
     <View style={styles.footer}>
       <Pressable onPress={() => navigation.navigate('Productos', { screen: 'CategoriesRender' })}>

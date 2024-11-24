@@ -23,8 +23,6 @@ const ProfileScreen = () => {
   const [triggerPutProfilePicture, result] = usePutProfilePictureMutation()
 
   const verifyPermissions = async () => {
-    console.log('permisos...');
-
     const { status } = await ImagePicker.requestCameraPermissionsAsync();
     if (status !== "granted") {
       Alert.alert(
@@ -42,7 +40,6 @@ const ProfileScreen = () => {
 
   const pickImage = async () => {
 
-
     const permissionOk = await verifyPermissions();
     console.log(permissionOk);
 
@@ -57,7 +54,7 @@ const ProfileScreen = () => {
         quality: 0.7,
         base64: true,
       });
-      console.log('result: ', result);
+    
 
       if (!result.canceled) {
 

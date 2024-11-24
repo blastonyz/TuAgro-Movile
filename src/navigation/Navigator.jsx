@@ -1,4 +1,4 @@
-import { View, StyleSheet, Text, Pressable, Button } from 'react-native'
+import { View, StyleSheet, Text, Pressable } from 'react-native'
 import { createDrawerNavigator, DrawerContentScrollView, DrawerItemList } from "@react-navigation/drawer";
 import 'react-native-gesture-handler';
 import Home from "../home/Home.jsx";
@@ -23,8 +23,6 @@ const CustomDrawerContent = (props) => {
 
 const Navigator = () => {
   return (
-
-
     <Drawer.Navigator
       initialRouteName="Home"
       drawerContent={(props) => <CustomDrawerContent {...props} />}

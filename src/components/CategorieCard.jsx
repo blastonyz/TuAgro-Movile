@@ -3,7 +3,7 @@ import { colors } from '../utils/colors'
 
 const CategorieCard = ({ item, dispatch, setCategory, navigation }) => {
     return (
-        <View style={styles.categorieContainer} >
+        <View>
            
             <Pressable onPress={() => {
                 dispatch(setCategory(item.title))

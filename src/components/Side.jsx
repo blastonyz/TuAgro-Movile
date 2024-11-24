@@ -3,7 +3,7 @@ import { View, Text } from 'react-native'
 const Side = () => {
   return (
     <View>
-        <Text>Hola soy Productos</Text>
+        <Text>Seccion en construccion</Text>
     </View>
   )
 }

@@ -18,6 +18,7 @@ const CartScreen = () => {
         const handlePurchase = () => {
             if (user) {
                 triggerPost({ cartItems, createdAt: Date.now(), user, total });
+                Alert.alert("Gracias por Tu Compra!");
             } else {
                 Alert.alert("Debe registrarse para realizar la compra");
             }

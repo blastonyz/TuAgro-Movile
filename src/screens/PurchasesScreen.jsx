@@ -21,9 +21,6 @@ const PurchasesScreen = () => {
         return <Text>Loading...</Text>;
     }
  
-    console.log('data: ',data);
-    
-
     return (
         user ?
             <>

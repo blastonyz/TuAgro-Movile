@@ -1,5 +1,4 @@
 import { StatusBar } from 'expo-status-bar';
-import { StyleSheet } from 'react-native';
 import Navigator from './src/navigation/Navigator';
 import Header from './src/components/Header';
 import TabBottoms from './src/components/TabBottoms';
