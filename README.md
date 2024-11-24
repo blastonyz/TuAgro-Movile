@@ -1,7 +1,7 @@
-#PROYECTO TU AGRO
-##DESARROLLADO EN REACT NATIVE & EXPO GO
+# PROYECTO TU AGRO
+## DESARROLLADO EN REACT NATIVE & EXPO GO
 
-## **LINK DE DESCARGA DEL APK** [APK](https://drive.google.com/file/d/1lt6xDKnMc2BYWEEobeDZLeUWQ3iBIag0/view?usp=sharing)
+## **LINK DE DESCARGA DEL **[APK](https://drive.google.com/file/d/1lt6xDKnMc2BYWEEobeDZLeUWQ3iBIag0/view?usp=sharing)
 
 ### Descripcion
 
